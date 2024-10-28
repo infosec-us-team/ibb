@@ -1,0 +1,20 @@
+[dependencies]
+clap = { version = "4.5.20", features = ["cargo", "derive"] }
+reqwest = { version = "0.12.8", features = ["json"] }
+serde-query = "0.2.0"
+serde_json = "1.0.132"
+tokio = { version = "1.41.0", features = ["full"] }
+
+[package]
+name = "ibb"
+version = "0.1.0"
+edition = "2021"
+authors = ["infosec_us_team <infosec_us_team@protonmail.com>"]
+license = "MIT"
+description = "Is like jq for Immunefi REST API. Search, filter and map structured data about bug bounty programs with ease."
+readme = "README.md"
+homepage = "https://github.com/infosec-us-team/ibb/"
+repository = "https://github.com/infosec-us-team/ibb/"
+keywords = ["cli", "immunefi", "infosec_us_team", "bug bounties", "bbp", "web3", "whitehat"]
+categories = ["command-line-utilities"]
+
