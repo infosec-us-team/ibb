@@ -15,6 +15,6 @@ description = "Is like jq for Immunefi REST API. Search, filter and map structur
 readme = "README.md"
 homepage = "https://github.com/infosec-us-team/ibb/"
 repository = "https://github.com/infosec-us-team/ibb/"
-keywords = ["cli", "immunefi", "infosec_us_team", "bug bounty"]
+keywords = ["cli", "immunefi"]
 categories = ["command-line-utilities"]
 
