@@ -7,7 +7,7 @@ Is like [jq](https://github.com/jqlang/jq) for Immunefi REST API. Search, filter
 
 ### Basic Commands
 
-List an array with all programs.
+A list with all programs.
 ```sh
 > ibb
 
@@ -130,6 +130,8 @@ Filter the output as much as desired by adding nested fields
   "Submitting malicious transactions to an already-connected wallet"
 ]
 ```
+
+For reference, please visit this link for a list of all the values returned by the Immunefi API: [https://github.com/infosec-us-team/Immunefi-Bug-Bounty-Programs-Unofficial/blob/main/project/0x.json](https://github.com/infosec-us-team/Immunefi-Bug-Bounty-Programs-Unofficial/blob/main/project/0x.json)
 
 ## Installation
 
