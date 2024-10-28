@@ -6,7 +6,7 @@ tokio = { version = "1.41.0", features = ["full"] }
 
 [package]
 name = "ibb"
-version = "0.1.0"
+version = "0.1.0.1"
 edition = "2021"
 authors = ["infosec_us_team <infosec_us_team@protonmail.com>"]
 license = "MIT"
