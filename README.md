@@ -3,30 +3,6 @@
 **Effortlessly find and filter data on Immunefi Bug Bounty Programs**  
 Is like [jq](https://github.com/jqlang/jq) for Immunefi REST API. Search, filter and map structured data about bug bounty programs with easy. Pipe the output into other cli tools.
 
----
-
-## Installation
-
-
-### Cargo (crates.io)
-
-If you already have a Rust environment set up, you can use the `cargo install` command:
-
-```sh
-cargo install ibb
-```
-
-Cargo will build the binary and place it in your `CARGO_INSTALL_ROOT`. For more details on installation location see the [cargo book](https://doc.rust-lang.org/cargo/commands/cargo-install.html#description).
-
-### Cargo (git)
-
-If you already have a Rust environment set up, you can use the `cargo install` command in your local clone of the repo:
-```sh
-git clone https://github.com/infosec-us-team/ibb
-cd ibb
-cargo install --path .
-```
-
 ## Usage
 
 ### Basic Commands
@@ -39,7 +15,7 @@ List an array with all programs.
 ```
 
 Show details for a specific program
-> # ibb <program_name>
+> ibb <program_name>
 
 ```sh
 > ibb moonbeamnetwork
@@ -48,7 +24,7 @@ Show details for a specific program
 ```
 
 Filter by fields (e.g., assets, URLs, documentation)
-> # ibb <program_name> <field> [<nested_field> ...]
+> ibb <program_name> <field> [<nested_field> ...]
 
 ```sh
 > ibb moonbeamnetwork assets
@@ -63,7 +39,6 @@ Filter by fields (e.g., assets, URLs, documentation)
     "type": "blockchain_dlt",
     "url": "https://github.com/PureStake/moonbeam"
   },
-  {
   #... more JSON objects here
 ```
 
@@ -155,4 +130,26 @@ Filter the output as much as desired by adding nested fields
   "Submitting malicious transactions to an already-connected wallet"
 ]
 ```
+
+## Installation
+
+### Cargo (crates.io)
+
+If you already have a Rust environment set up, you can use the `cargo install` command:
+
+```sh
+cargo install ibb
+```
+
+Cargo will build the binary and place it in your `CARGO_INSTALL_ROOT`. For more details on installation location see the [cargo book](https://doc.rust-lang.org/cargo/commands/cargo-install.html#description).
+
+### Cargo (git)
+
+If you already have a Rust environment set up, you can use the `cargo install` command in your local clone of the repo:
+```sh
+git clone https://github.com/infosec-us-team/ibb
+cd ibb
+cargo install --path .
+```
+
 
