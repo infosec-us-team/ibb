@@ -4,7 +4,7 @@ use serde_json::Value;
 
 #[derive(Parser)]
 #[command(version,
-    after_help = "Examples:\n\nList the ID of all Bug Bounty Programs in Immunefi\n-> ib\n\nAll details about Moonbeam Network's Bug Bounty Program\n-> ibb moonbeamnetwork\n\nOnly assets in scope and their metadata\n-> ibb moonbeamnetwork assets\n\nOnly URLs\n-> ibb moonbeamnetwork assets url\n\nThe protocol documentation 0x listed in their Bug Bounty Program\n-> ibb 0x programDocumentations\n\nFind recursively any field returned by Immunefi's REST API for a specific Bug Bounty Program\n\n-> ibb [any_program] [any_field]\n\nFilter the output as much as desired by adding nested fields\n-> ibb [any_program] [any_field] [nestedfield_1] [nestedfield_2]\n-> ibb moonbeamnetwork bounty impacts title",
+    after_help = "Examples:\n\nList the slug of all Bug Bounty Programs in Immunefi\n-> ibb\n\nAll details about Moonbeam Network's Bug Bounty Program\n-> ibb moonbeamnetwork\n\nOnly assets in scope and their metadata\n-> ibb moonbeamnetwork assets\n\nOnly URLs\n-> ibb moonbeamnetwork assets url\n\nThe protocol documentation 0x listed in their Bug Bounty Program\n-> ibb 0x programDocumentations\n\nFind recursively any field returned by Immunefi's REST API for a specific Bug Bounty Program\n\n-> ibb [any_program] [any_field]\n\nFilter the output as much as desired by adding nested fields\n-> ibb [any_program] [any_field] [nestedfield_1] [nestedfield_2]\n-> ibb moonbeamnetwork bounty impacts title",
     about = "Is like jq for Immunefi's REST API. Search, filter and map structured data about bug bounty programs with ease.",
     long_about = None,
     author = "infosec_us_team"
@@ -25,15 +25,15 @@ async fn main() -> Result<(), ReqwestError> {
 
         // Define the API endpoint for bug bounty programs
         const API_ENDPOINT: &str = "https://cdn.jsdelivr.net/gh/infosec-us-team/Immunefi-Bug-Bounty-Programs-Unofficial/projects.json";
-        
+
         // Send a GET request to the API endpoint
         let response = reqwest::get(API_ENDPOINT).await?;
-        
+
         // Ensure the request was successful
         if response.status().is_success() {
             // Parse JSON response
             let json: Value = response.json().await?;
-            
+
             // Extract and print all bug bounty IDs
             let mut ids = Vec::new();
             projects_ids(&json, &mut ids);
@@ -42,19 +42,18 @@ async fn main() -> Result<(), ReqwestError> {
             // Print error if request was unsuccessful
             eprintln!("Error: {}", response.status());
         }
-
     } else {
         // If query has arguments, retrieve specific bug bounty program info
 
         // Extract the first argument as the bug bounty program ID
         let bbp = cli.query.first().cloned().unwrap_or_default();
-        
+
         // Construct API endpoint URL for specific bug bounty program
         let api_endpoint = "https://cdn.jsdelivr.net/gh/infosec-us-team/Immunefi-Bug-Bounty-Programs-Unofficial/project/".to_string() + &bbp + ".json";
-        
+
         // Send a GET request to the constructed endpoint
         let response = reqwest::get(api_endpoint).await?;
-        
+
         // Ensure the request was successful
         if response.status().is_success() {
             // Parse JSON response
@@ -80,16 +79,16 @@ async fn main() -> Result<(), ReqwestError> {
     Ok(())
 }
 
-/// Recursively searches for all "id" fields in a JSON structure, concatenates each "id" value into a single string, and appends a newline after each found "id".
+/// Recursively searches for all "slug" fields in a JSON structure, concatenates each "slug" value into a single string, and appends a newline after each found "slug".
 fn projects_ids(value: &Value, ids: &mut Vec<String>) {
     match value {
         // If the value is an object, process it as a map
         Value::Object(map) => {
-            // Check if there's an "id" field, and if so, add it to ids
-            if let Some(id) = map.get("id").and_then(Value::as_str) {
+            // Check if there's an "slug" field, and if so, add it to ids
+            if let Some(id) = map.get("slug").and_then(Value::as_str) {
                 ids.push(id.to_string());
             } else {
-                // If no "id" field, recursively search through each value in the map
+                // If no "slug" field, recursively search through each value in the map
                 for v in map.values() {
                     projects_ids(v, ids);
                 }

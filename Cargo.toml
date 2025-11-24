@@ -6,7 +6,7 @@ tokio = { version = "1.41.0", features = ["full"] }
 
 [package]
 name = "ibb"
-version = "0.1.1"
+version = "0.2.0"
 edition = "2021"
 authors = ["infosec_us_team <infosec_us_team@protonmail.com>"]
 license = "MIT"
@@ -16,4 +16,3 @@ homepage = "https://github.com/infosec-us-team/ibb/"
 repository = "https://github.com/infosec-us-team/ibb/"
 keywords = ["cli", "immunefi"]
 categories = ["command-line-utilities"]
-
